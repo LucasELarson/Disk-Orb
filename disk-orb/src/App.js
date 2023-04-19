@@ -1,12 +1,19 @@
+import ChannelBar, { Foo } from "./COMPONENTS/ChannelBar";
+import MainBody from "./COMPONENTS/MainBody";
+import People from "./COMPONENTS/People";
+import SideBar from "./COMPONENTS/Sidebar";
+import TopHeader from "./COMPONENTS/TopHeader";
 
-import './index.css';
-
-function App() {
+export default function App() {
   return (
-    <h1 className='text-3xl font-bold underline bg-red-600'>
-      Hello World!
-    </h1>
-  );
+    <div className="flex flex-col">
+      <TopHeader/>
+      <div className="flex">
+      <SideBar/>
+      <ChannelBar/>
+      <MainBody/>
+      <People/>
+      </div>
+    </div>
+  )
 }
-
-export default App;
