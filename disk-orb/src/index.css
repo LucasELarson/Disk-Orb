@@ -6,7 +6,7 @@
 
   .sidebar-icon {
     @apply relative flex items-center justify-center
-            h-12 w-12 mt-2 mb-2 mx-auto
+            h-12 w-12 mt-1 mb-1 mx-auto
             bg-neutral-800 text-green-500
             hover:bg-green-600 hover:text-white
             rounded-3xl hover:rounded-xl
@@ -22,7 +22,6 @@
             transition-all duration-100 scale-0 origin-left;  
   }
 }
-
 
 
 #Channel-Bar{
@@ -47,14 +46,21 @@
       grid-template-columns: 56fr 44fr;
     }
 
-      #Left-User-Controls{
-        width: 130px;
+      #Left-User-Control{
+        width: 122px;
+        height: 38px;
         overflow: hidden;
+        justify-self: center;
+        align-self: center;  
+        cursor: pointer; 
       }
 
           #User-Cont-Info{
+            width: 80px;
+            height: 35px;
             overflow: hidden;  
-            justify-content: center;       
+            justify-content: center;  
+            flex-shrink: 1;     
           }
 
           #User-Name{
@@ -67,23 +73,29 @@
           }
 
           #User-ID{
-            font-size: 11px;
+            font-size: 12px;
           }
 
           #User-Icon-Div{
-            display: flex;           
+            display: flex;  
+            flex-shrink: 1;         
           }
 
               #User-Icon{
-                height: 34px;
-                width: 34px;
+                height: 32px;
+                width: 32px;
                 border-radius: 50%;
-
               }
 
-      #Right-User-Controls{
+      #Right-User-Control{
         width: 110px;
       }
+
+        #Control-Icon{
+          padding: 9px;
+          border-radius: 0.375rem;
+          cursor: pointer;
+        }
 
 #Sidebar{
   min-width: 70px;

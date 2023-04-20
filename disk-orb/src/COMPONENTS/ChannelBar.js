@@ -32,23 +32,29 @@ const ChannelBar = () => {
          
          
          <div id="User-Controls" className="">
-            <div id="Left-User-Control" className="flex">
-               <div id="User-Icon-Div" className="flex items-center pl-2 pr-2 shrink-0">
+            <div id="Left-User-Control" className="flex hover:bg-bghover rounded-md">
+               <div id="User-Icon-Div" className="flex items-center pl-1 pr-1.5 shrink-0">
                   <img alt="icon" id="User-Icon" src={cyndaquil}/>
                </div>
                <div id="User-Cont-Info" className="flex flex-col">
                   <div id="User-Name" className="">
-                     Lucas Films       
+                     Lucas Films
                   </div>
                   <div id="User-ID" className="text-neutral-300">
                      #2244
                   </div>
                </div>
             </div>
-            <div id="Right-User-Controls" className="flex text-neutral-300 items-center justify-center gap-3">
-               <BsMicFill size={20}/>
-               <BsHeadphones size={20}/>
-               <BsFillGearFill size={20}/>
+            <div id="Right-User-Control" className="flex text-neutral-300 items-center justify-center">
+               <div id="Control-Icon"  className="hover:text-hover hover:bg-bghover">
+                  <BsMicFill size={18}/>
+               </div>
+               <div id="Control-Icon" className="hover:text-hover hover:bg-bghover">
+                  <BsHeadphones size={18}/>
+               </div>
+               <div id="Control-Icon" className="hover:text-hover hover:bg-bghover">
+                  <BsFillGearFill size={18}/>
+               </div>
             </div>
          </div>
       </div>

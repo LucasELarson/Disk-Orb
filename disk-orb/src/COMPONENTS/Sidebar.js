@@ -1,5 +1,5 @@
 import { BsHeartPulse, BsFillLightningFill, BsFillGearFill } from 'react-icons/bs'
-import { FaFire, FaPoo } from 'react-icons/fa'
+import { FaFire, FaPoo, FaCannabis } from 'react-icons/fa'
 
 const SideBar = () => {
    return(
@@ -12,6 +12,7 @@ const SideBar = () => {
          <SideBarIcon icon={<FaPoo size="28"/>} text={"Poop"}/>
          <SideBarIcon icon={<BsHeartPulse size="28"/>} text={"Health"} />
          <SideBarIcon icon={<BsFillLightningFill size="28"/>} text={"Energy Consumption"} />
+         <SideBarIcon icon={<FaCannabis size="28"/>} text={"Weed Time"} />
       </div>
    )
 };
