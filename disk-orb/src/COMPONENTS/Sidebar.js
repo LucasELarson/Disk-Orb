@@ -3,7 +3,7 @@ import { FaFire, FaPoo } from 'react-icons/fa'
 
 const SideBar = () => {
    return(
-      <div className=" h-screen w-16 m-0
+      <div id='Sidebar' className=" m-0
                         flex flex-col
                         bg-neutral-900 text-white shadow-lg">
 
