@@ -12,7 +12,7 @@ export default function App() {
       <SideBar/>
       <ChannelBar/>
       <MainBody/>
-      <People/>
+      {/* <People/> */}
       </div>
     </div>
   )
