@@ -7,20 +7,20 @@ import cyndaquil from '../IMAGES/Cyndaquil.jpg'
 
 const ChannelBar = () => {
    return(
-      <div id="Channel-Bar-Container" className="flex flex-col justify-between">
+      <div id="Channel-Bar-Container" className="flex flex-col">
          
          
          
          
-         <div id="Channel-Bar-Header" className="flex bg-neutral-800 items-center pl-5">
+         <div id="Channel-Bar-Header" className="flex bg-neutral-800 items-center pl-5 shrink-0">
             <p id="Server-Name">l̶o̶b̶o̶t̶o̶m̶y̶ ̶e̶n̶j̶o̶y̶e̶r̶s̶</p>
          </div>
-         
+            
          
          
          
          <div id="Channel-Bar" className=" m-0
-                           flex flex-col flex-shrink-1 flex-grow gap-2 pt-5 pl-2 pr-2
+                           flex flex-col flex-shrink flex-grow gap-2 pt-5 pl-2 pr-2
                            bg-neutral-800 text-white shadow-lg">
 
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Voice Channels"} channelNameText={"General"}/>

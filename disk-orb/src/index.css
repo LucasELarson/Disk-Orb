@@ -111,6 +111,47 @@
   min-width: 350px;
 }
 
+    #Main-Header{
+      height: 50px;
+      border-bottom: 1px;
+      border-style: solid; 
+      border-color: rgb(31,32,35);
+    }
+
+    #Main-Chat{
+      height: 0vh;
+    }
+
+    #Main-Chat::-webkit-scrollbar{
+      width: 15px;
+      border-radius: 50px;
+    }
+
+    #Main-Chat::-webkit-scrollbar-thumb{
+      width: 24px;
+      background: rgb(30,31,34);
+      border-left: 3px solid rgb(49,51,56);
+      border-right: 3px solid rgb(49,51,56);
+      border-radius: 25px;
+    }
+
+    #Main-Chat::-webkit-scrollbar-track{
+      border-radius: 25px;
+      border-style: solid;
+      border-color: rgb(49,51,56);
+      background-color: rgb(43,45,49);
+    }
+
+    
+
+    #Main-Input{
+      height: 75px;
+    }
+
+        .Input-Icon{
+          padding-right: 1rem;
+        }
+
 :root{
   min-height: 500px;
   overflow: hidden;
