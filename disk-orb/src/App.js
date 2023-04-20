@@ -6,13 +6,13 @@ import TopHeader from "./COMPONENTS/TopHeader";
 
 export default function App() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen">
       <TopHeader/>
-      <div className="flex">
+      <div className="flex h-full">
       <SideBar/>
       <ChannelBar/>
       <MainBody/>
-      {/* <People/> */}
+      <People/>
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 const MainBody = () => {
    return(
-      <div className=" h-screen w-10/12 bg-neutral-700">
+      <div id="Main-Body" className=" flex flex-shrink w-9/12 bg-neutral-700">
          Main Body
       </div>
    )

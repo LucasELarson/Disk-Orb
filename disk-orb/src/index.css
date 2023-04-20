@@ -22,3 +22,89 @@
             transition-all duration-100 scale-0 origin-left;  
   }
 }
+
+
+
+#Channel-Bar{
+  width: 240px;
+}
+
+    #Channel-Bar-Header{
+      height: 50px;
+      border-bottom: 1px;
+      border-style: solid; 
+      border-color: rgb(31,32,35);
+    }
+
+    #Server-Name{
+      color: rgb(231,232,235);
+    }
+
+    #User-Controls{
+      min-height: 50px;
+      background-color: rgb(35,36,40);
+      display: grid;
+      grid-template-columns: 56fr 44fr;
+    }
+
+      #Left-User-Controls{
+        width: 130px;
+        overflow: hidden;
+      }
+
+          #User-Cont-Info{
+            overflow: hidden;  
+            justify-content: center;       
+          }
+
+          #User-Name{
+            color: rgb(242,242,242);
+            font-size: 14px;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          #User-ID{
+            font-size: 11px;
+          }
+
+          #User-Icon-Div{
+            display: flex;           
+          }
+
+              #User-Icon{
+                height: 34px;
+                width: 34px;
+                border-radius: 50%;
+
+              }
+
+      #Right-User-Controls{
+        width: 110px;
+      }
+
+#Sidebar{
+  min-width: 70px;
+  max-width: 4.5rem;
+}
+
+#People{
+  width: 240px;
+}
+
+#Main-Body{
+  width: 100%;
+  min-width: 350px;
+}
+
+:root{
+  min-height: 500px;
+  overflow: hidden;
+  height: 100vh;
+}
+
+body{
+  height: 100vh;
+}

@@ -1,6 +1,6 @@
 const People = () => {
    return (
-      <div className=" w-1/12 h-screen bg-neutral-800">
+      <div id="People" className="flex-shrink-0 bg-neutral-800">
          People
       </div>
    )

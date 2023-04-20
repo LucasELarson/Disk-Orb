@@ -45,3 +45,8 @@
     transform: rotate(90deg);
   }
 }
+
+#channel-bar{
+  min-width: 20px;
+  max-width: 30px;
+}
