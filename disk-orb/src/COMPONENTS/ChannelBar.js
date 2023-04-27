@@ -13,7 +13,7 @@ const ChannelBar = () => {
          
          
          <div id="Channel-Bar-Header" className="flex bg-neutral-800 items-center pl-5 shrink-0">
-            <p id="Server-Name">l̶o̶b̶o̶t̶o̶m̶y̶ ̶e̶n̶j̶o̶y̶e̶r̶s̶</p>
+            <p id="Server-Name">A great place to chat</p>
          </div>
             
          
@@ -24,7 +24,7 @@ const ChannelBar = () => {
                            bg-neutral-800 text-white shadow-lg">
 
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Voice Channels"} channelNameText={"General"}/>
-            <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Animal Channels"} channelNameText={"Kitten Korner"}/>
+            <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Animal Channels"} channelNameText={"Orca Orchestra"}/>
             <ChannelGroupText icon={<GoChevronRight size={10}/>} text={"Text Channels"} channelNameText={"Text Time"}/>
          </div>
          

@@ -3,6 +3,7 @@ import { BsFillPlusCircleFill, BsFillGiftFill, BsFillEmojiKissFill, BsFiletypeGi
 import { ImFileEmpty } from 'react-icons/im'
 import React from "react"
 
+
 const MainBody = () => {
    return(
       <div id="Main-Body" className=" flex flex-shrink w-9/12 bg-neutral-700 flex-col">
@@ -14,8 +15,8 @@ const MainBody = () => {
 
          
          
-         <div id="Main-Chat" className="m-0 mr-0.5 flex flex-col flex-shrink flex-grow bg-neutral-700 overflow-scroll overflow-x-hidden">
-         <div className=" bg-red-300 h-32 w-32 shrink-0"/>
+         <div id="Main-Chat" className="m-0 mr-0.5 flex flex-col flex-shrink grow bg-neutral-700 overflow-scroll overflow-x-hidden">
+         <div className=" bg-purple-900 h-32 w-32 shrink-0"/>
          <div className=" bg-slate-100 h-32 w-32 shrink-0"/>
          <div className=" bg-slate-400 h-32 w-32 shrink-0"/>
          <div className=" bg-slate-700 h-32 w-32 shrink-0"/>
@@ -67,26 +68,31 @@ const MainBody = () => {
 
          
          
-         <div id="Main-Input" className="flex bg-neutral-700 pt-3 pb-6 shrink-0">
-            <div id="Input-Div" className="flex flex-grow bg-neutral-600 m-h-10 mx-5 rounded-lg text-neutral-300 items-center">
-               <div id="Add-Media-Input" className="px-4">
-                  <BsFillPlusCircleFill size={20}/>
-               </div>
-                  <input  type={"text"} className="flex flex-grow h-full bg-neutral-600 focus:border-none" />
+         <div id="Main-Input" className=" bg-neutral-700 pt-3 pb-6 w-full pr-10 shrink-0">
+            <div id="Input-Div" className="relative flex w-full h-full mx-5 text-neutral-300 items-start pt-0">
+               
+                  <span id="text-box"  contentEditable="true" className=" inline-block h-full bg-neutral-600" />
                   
-               <div id="Add-Nitro-Input" className="Input-Icon pl-4">
-                  <BsFillGiftFill size={20}/>
-               </div>
-               <div id="Add-Gif-Input" className="Input-Icon">
-                  <BsFiletypeGif size={20}/>
-               </div>
-               <div id="Add-Sticker-Input" className="Input-Icon">
-                  <ImFileEmpty size={20}/>
-               </div>
-               <div id="Add-Emoji-Input" className="Input-Icon">
-                  <BsFillEmojiKissFill size={20}/>
-               </div>
+                  <div id="Add-Media-Input" className="px-4 absolute top-2 left-0 text-neutral-300 hover:text-hover">
+                  <BsFillPlusCircleFill size={22}/>
+                  </div>
+
+                  <div id="right-icons" className="absolute flex right-1 top-2">
+                     <div id="Add-Nitro-Input" className="Input-Icon text-neutral-300 hover:text-hover">
+                        <BsFillGiftFill size={22}/>
+                     </div>
+                     <div id="Add-Gif-Input" className="Input-Icon text-neutral-300 hover:text-hover">
+                        <BsFiletypeGif size={22}/>
+                     </div>
+                     <div id="Add-Sticker-Input" className="Input-Icon text-neutral-300 hover:text-hover">
+                        <ImFileEmpty size={22}/>
+                     </div>
+                     <div id="Add-Emoji-Input" className="Input-Icon text-neutral-300 hover:text-hover">
+                        <BsFillEmojiKissFill size={22}/>
+                     </div>
+                  </div>
             </div>
+               
          </div>
 
       </div>
