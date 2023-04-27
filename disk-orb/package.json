@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "aws": "aws s3 sync build/ s3://lucas-larson.com"
+    "aws": "react-scripts build && aws s3 sync build/ s3://lucas-larson.com"
   },
   "eslintConfig": {
     "extends": [
