@@ -1,2 +1,2 @@
 # Disk-Orb
-A homemade discord clone
+A homemade (work in progress) discord clone
