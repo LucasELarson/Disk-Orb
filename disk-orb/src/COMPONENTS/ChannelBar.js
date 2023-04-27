@@ -20,12 +20,13 @@ const ChannelBar = () => {
          
          
          <div id="Channel-Bar" className=" m-0
-                           flex flex-col flex-shrink flex-grow gap-2 pt-5 pl-2 pr-2
+                           flex flex-col flex-grow gap-2 pt-5 pl-2 pr-2
                            bg-neutral-800 text-white shadow-lg">
 
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Voice Channels"} channelNameText={"General"}/>
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Animal Channels"} channelNameText={"Orca Orchestra"}/>
             <ChannelGroupText icon={<GoChevronRight size={10}/>} text={"Text Channels"} channelNameText={"Text Time"}/>
+            
          </div>
          
          
@@ -112,6 +113,7 @@ export class ChannelGroup extends React.Component {
             <div style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1">
                <ChannelName icon={<HiVolumeUp size={18}/>} text={channelNameText}/>
                <ChannelName icon={<HiVolumeUp size={18}/>} text={"The Pickling "}/>
+               
             </div>           
          </div> 
        )

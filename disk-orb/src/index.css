@@ -26,6 +26,12 @@
 
 #Channel-Bar{
   width: 240px;
+  overflow: scroll;
+  height: 0vh;
+}
+
+#Channel-Bar::-webkit-scrollbar{
+  display: none;
 }
 
     #Channel-Bar-Header{
@@ -150,7 +156,6 @@
       padding-left: 50px;  
       border-radius: 10px;   
     }
-
 
 
 
