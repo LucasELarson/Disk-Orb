@@ -13,6 +13,7 @@ module.exports = {
         secondary: '#5865f2',
         hover: "rgb(219,222,225)",
         bghover: "rgb(54,55,61)",
+        messageHover: "rgb(46, 48, 53)",
         gray: colors.neutral,
         neutral: {
           900: 'rgb(30,31,34)',

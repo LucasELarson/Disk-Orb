@@ -149,6 +149,15 @@
       background-color: rgb(43,45,49);
     }
 
+        #user-icon{
+          border-radius: 50%;
+        }
+
+        #message-media{
+          width: 350px;
+          border-radius: 2.5%;
+        }
+
     #text-box{
       width: 100%;
       overflow-y: scroll;
@@ -201,4 +210,11 @@
 
 body{
   height: 100vh;
+}
+
+
+#People-Bar{
+  width: 240px;
+  overflow: scroll;
+  height: 0vh;
 }
