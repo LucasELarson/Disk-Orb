@@ -1,19 +1,16 @@
-import { BiPlus, BiHash } from "react-icons/bi"
 import { BsFillPlusCircleFill, BsFillGiftFill, BsFillEmojiKissFill, BsFiletypeGif } from 'react-icons/bs' 
+import { BiHash } from 'react-icons/bi'
 import { ImFileEmpty } from 'react-icons/im'
-import React, { useEffect, useState } from "react"
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp, Timestamp, } from 'firebase/firestore'
-import cyndaquil from '../IMAGES/Cyndaquil.jpg'
-import matcha from '../IMAGES/matcha.jpg'
-import curry from '../IMAGES/curry.jpg'
+import React, { useEffect, useState, useRef } from "react"
+import { addDoc, collection, doc, onSnapshot, orderBy, query, Timestamp, } from 'firebase/firestore'
 import { auth, db } from "../firebase-config"
 
 
 const MainBody = () => {
-
    const [messages, setMessages] = useState([])
 
    const messagesRef = collection(db, "messages")
+
 
    // PULL MESSAGES //
    useEffect(() => {
@@ -42,6 +39,11 @@ const MainBody = () => {
             userIcon: auth.currentUser.photoURL,
             room: "chat-room",
           })
+
+          //TEMPORARY FIX //
+          document.getElementById("User-Icon").src = auth.currentUser.photoURL
+          document.getElementById("User-Name").innerText = auth.currentUser.displayName
+          // TEMPORARY FIX //
           document.getElementById('text-box').innerHTML = ''
         }
       };
@@ -55,15 +57,16 @@ const MainBody = () => {
    return(
       <div id="Main-Body" className=" flex flex-shrink w-9/12 bg-neutral-700 flex-col">
          
-         <div id="Main-Header" className="text-white text-7xl bg-neutral-700 w-full shrink-0" >
-            
+         <div id="Main-Header" className="flex items-center text-white text-md bg-neutral-700 w-full shrink-0" >
+            <div id='replace'><BiHash/></div>
+            <div id='Main-Header-Text'></div>
          </div>
 
 
          
          
          <div id="Main-Chat" className="m-0 mr-0.5 flex flex-col-reverse flex-shrink grow bg-neutral-700 overflow-scroll overflow-x-hidden">
-            <div>{messages.map((message) => <Message userIcon={message.userIcon} userName={message.user} date={String(setDate(message.createdAt.seconds * 1000))} message={message.text} />)}</div>
+            <div>{messages.map((message) => <Message userIcon={message.userIcon} userName={message.user} date={String(setDate(message.createdAt.seconds * 1000))} message={message.text} />)} </div>
          </div>
 
 
@@ -108,10 +111,10 @@ function setDate(day) {
    var h = date.getHours()
    var m = date.getMinutes()
    var ampm = (h >= 12) ? " PM" : " AM";
-   if(h>=12){
+   if(h>12){
       h =  h- 12
    }
-   if(String(m).length <2){
+   if(String(m).length <1){
       return(String(mo + 1) + "/" + String(d) + "/" + String(y) + " at " + String(h) + ":0" + String(m) + ampm)
    } else {
       return(String(mo + 1) + "/" + String(d) + "/" + String(y) + " at " + String(h) + ":" + String(m) + ampm)

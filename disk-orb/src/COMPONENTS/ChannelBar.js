@@ -5,7 +5,11 @@ import React, { useState } from 'react';
 import { BsMicFill, BsMicMuteFill, BsHeadphones, BsFillGearFill} from "react-icons/bs"
 import cyndaquil from '../IMAGES/Cyndaquil.jpg'
 
+
+
 const ChannelBar = () => {
+
+
    return(
       <div id="Channel-Bar-Container" className="flex flex-col">
          
@@ -25,7 +29,7 @@ const ChannelBar = () => {
 
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Voice Channels"} channelNameText={"General"}/>
             <ChannelGroup icon={<GoChevronRight size={10}/>} text={"Animal Channels"} channelNameText={"Orca Orchestra"}/>
-            <ChannelGroupText icon={<GoChevronRight size={10}/>} text={"Text Channels"} channelNameText={"Text Time"}/>
+            <ChannelGroupText icon={<GoChevronRight size={10}/>} text={"Text Channels"} />
             
          </div>
          
@@ -39,10 +43,10 @@ const ChannelBar = () => {
                </div>
                <div id="User-Cont-Info" className="flex flex-col">
                   <div id="User-Name" className="">
-                     Lucas Films
+                     {"Sign in"}
                   </div>
                   <div id="User-ID" className="text-neutral-300">
-                     #2244
+                     #1234
                   </div>
                </div>
             </div>
@@ -62,28 +66,40 @@ const ChannelBar = () => {
    )
 }
 
-const ChannelName = ({ icon, text }) => (
-   <div className="h-10 flex flex-row gap-1 text-neutral-400 hover:bg-bghover hover:text-hover rounded">
-      <div className="flex self-center" >
-         {icon}
-      </div>
-      <span className='flex self-center'>
-         {text}
-      </span>
-   </div>
-);
-
-
-// const ChannelGroup = ({ icon, text }) => (
-//    <div id="group-icon" className="h-10 flex flex-row gap-1 text-neutral-400 hover:bg-neutral-700 hover:text-white rounded group">
-//       <div className="flex self-center transition-all duration-100 group-active:rotate-90">
-//          <GoChevronRight size={10}/>
+// const ChannelName = ({ icon, text }) => (
+//    <div className="h-10 flex flex-row gap-1 text-neutral-400 hover:bg-bghover hover:text-hover rounded">
+//       <div className="flex self-center" >
+//          {icon}
 //       </div>
 //       <span className='flex self-center'>
 //          {text}
 //       </span>
 //    </div>
-// )
+// );
+
+export class ChannelName extends React.Component{
+   constructor(props){
+      super(props)
+      this.state = {icon: <></>, text: "", room: ""}
+   }
+   render() {
+      const {icon = <></>} = this.props
+      const {text = ''} = this.props
+      const {room = ''} = this.props
+      return(
+         <div className="h-10 flex flex-row gap-1 text-neutral-400 hover:bg-bghover hover:text-hover rounded" onClick={() => {
+            document.getElementById("Main-Header-Text").innerText = room;
+            }}>
+            <div className="flex self-center" >
+               {icon}
+            </div>
+            <span className='flex self-center'>
+               {text}
+            </span>
+         </div>
+      )
+   }
+}
 
 
 export class ChannelGroup extends React.Component {
@@ -95,9 +111,9 @@ export class ChannelGroup extends React.Component {
       const {text = ""} = this.props
       const { showing } = this.state;
        return (
-         <div id="group-icon" className=" text-sm h-auto pt-3 flex flex-col gap-1 text-neutral-400 hover:text-hover hover:cursor-pointer rounded" onClick={() => this.setState({ showing: !showing })} >
+         <div id="group-icon" className=" text-sm h-auto pt-3 flex flex-col gap-1 text-neutral-400 hover:text-hover hover:cursor-pointer rounded"  >
             <div className="flex flex-row justify-between">
-               <div className="flex flex-row">
+               <div className="flex flex-row" onClick={() => this.setState({ showing: !showing })}>
                   <div className="flex self-center transition-all duration-100" style={{ transform: (showing ? 'rotate(90deg)' : 'none') }}>
                      {icon}
                   </div>
@@ -111,7 +127,7 @@ export class ChannelGroup extends React.Component {
             </div>
              
             <div style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1">
-               <ChannelName icon={<HiVolumeUp size={18}/>} text={channelNameText}/>
+               <ChannelName icon={<HiVolumeUp size={18}/>} text={channelNameText} />
                <ChannelName icon={<HiVolumeUp size={18}/>} text={"The Pickling "}/>
                
             </div>           
@@ -120,33 +136,49 @@ export class ChannelGroup extends React.Component {
    }
 }
 
+
 export class ChannelGroupText extends React.Component {
-   state = { showing: true };
-   
+   constructor(props) {
+      super(props);
+      this.state = {
+        showing: true,
+        components: []
+      };
+    }
+
+    makeComponent() {
+      console.log("clicked me")
+      const newComponents = [...this.state.components, ChannelName]
+
+      this.setState({
+         components: newComponents
+      })
+    }
+
    render() {
-      const {channelNameText = ""} = this.props
+      const {channelNameText = "PLACEHOLDER"} = this.props
       const {icon = <></>} = this.props
       const {text = ""} = this.props
       const { showing } = this.state;
+      const {components} = this.state
        return (
-         <div id="group-icon" className=" text-sm h-auto pt-3 flex flex-col gap-1 text-neutral-400 hover:text-hover hover:cursor-pointer rounded" onClick={() => this.setState({ showing: !showing })} >
-            <div className="flex flex-row justify-between">
+         <div id="group-icon" className=" text-sm h-auto pt-3 flex flex-col gap-1 text-neutral-400 hover:text-hover hover:cursor-pointer rounded"  >
+            <div className="flex flex-row justify-between" >
                <div className="flex flex-row">
                   <div className="flex self-center transition-all duration-100" style={{ transform: (showing ? 'rotate(90deg)' : 'none') }}>
                      {icon}
                   </div>
-                  <span className='flex self-center'>
+                  <span className='flex self-center' onClick={() => this.setState({ showing: !showing })}>
                      {text}
                   </span>                          
                </div>
-               <div className="flex self-center">
+               <div className="flex self-center" onClick={this.makeComponent.bind(this)}>
                   <BiPlus size={18}/>
                </div>
             </div>
              
-            <div style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1">
-               <ChannelName icon={<BiHash size={18}/>} text={channelNameText}/>
-               <ChannelName icon={<BiHash size={18}/>} text={"The Pickling "}/>
+            <div id="Channel-Group-Channels" style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1" >
+               {components.length !== 0 && components.map((ChannelName, i) => <ChannelName key={i} icon={<BiHash size={18}/>} text={"Quotes"} room={"Quotes"}/>)}
             </div>           
          </div> 
        )
