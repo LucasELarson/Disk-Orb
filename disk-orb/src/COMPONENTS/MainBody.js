@@ -4,6 +4,7 @@ import { ImFileEmpty } from 'react-icons/im'
 import React, { useEffect, useState, useRef } from "react"
 import { addDoc, collection, doc, onSnapshot, orderBy, query, Timestamp, } from 'firebase/firestore'
 import { auth, db } from "../firebase-config"
+import 'flowbite';
 
 
 const MainBody = () => {
@@ -33,6 +34,7 @@ const MainBody = () => {
           event.preventDefault();
 
           await addDoc(messagesRef, {
+            file: "",
             text: String(document.getElementById('text-box').innerText),
             createdAt: Timestamp.fromDate(new Date()),
             user: auth.currentUser.displayName,
@@ -75,11 +77,19 @@ const MainBody = () => {
          <div id="Main-Input" className=" bg-neutral-700 pt-3 pb-6 w-full pr-10 shrink-0">
             <div id="Input-Div" className="relative flex w-full h-full mx-5 text-neutral-300 items-start pt-0">
                
-                  <span id="text-box" typeof="submit" contentEditable="true" className=" inline-block h-full bg-neutral-600" />
+                  <span id="text-box" typeof="submit" contentEditable="true" className="pt-1.5 inline-block h-full bg-neutral-600" />
                   
-                  <div id="Add-Media-Input" className="px-4 absolute top-2 left-0 text-neutral-300 hover:text-hover">
-                  <BsFillPlusCircleFill size={22}/>
+                  <div id="Add-Media-Input" className="px-4 absolute top-2 left-0 text-neutral-300 hover:text-hover" >
+                  <BsFillPlusCircleFill size={22} data-tooltip-target="AddMedia" data-tooltip-trigger="click"/>
+                  <div id="AddMedia" className='absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-neutral-300 transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700'>
+                     Upload Files
+                     <input id="Files" className="duration-300" type="file" multiple></input>
+                     <div data-popper-arrow className='duration-300'></div>
+                     
                   </div>
+                  </div>
+
+                  
 
                   <div id="right-icons" className="absolute flex right-1 top-2">
                      <div id="Add-Nitro-Input" className="Input-Icon text-neutral-300 hover:text-hover">

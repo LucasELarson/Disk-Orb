@@ -4,6 +4,7 @@ import { BiPlus, BiHash } from "react-icons/bi"
 import React, { useState } from 'react';
 import { BsMicFill, BsMicMuteFill, BsHeadphones, BsFillGearFill} from "react-icons/bs"
 import cyndaquil from '../IMAGES/Cyndaquil.jpg'
+import 'flowbite';
 
 
 
@@ -121,7 +122,7 @@ export class ChannelGroup extends React.Component {
                      {text}
                   </span>                          
                </div>
-               <div className="flex self-center">
+               <div className="flex self-center ">
                   <BiPlus size={18}/>
                </div>
             </div>
@@ -172,8 +173,13 @@ export class ChannelGroupText extends React.Component {
                      {text}
                   </span>                          
                </div>
-               <div className="flex self-center" onClick={this.makeComponent.bind(this)}>
-                  <BiPlus size={18}/>
+               <div className="flex self-center group" onClick={this.makeComponent.bind(this)}>
+                  <BiPlus size={18} className="tooltip" data-tooltip-target="AddChannel"/>
+                  <span id="AddChannel" className='absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-neutral-300 transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700'>
+                     Create Channel
+                     <div data-popper-arrow className="duration-300"></div>
+                  </span>
+
                </div>
             </div>
              
