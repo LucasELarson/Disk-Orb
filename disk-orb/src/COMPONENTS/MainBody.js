@@ -2,30 +2,58 @@ import { BsFillPlusCircleFill, BsFillGiftFill, BsFillEmojiKissFill, BsFiletypeGi
 import { BiHash } from 'react-icons/bi'
 import { ImFileEmpty } from 'react-icons/im'
 import React, { useEffect, useState, useRef } from "react"
-import { addDoc, collection, doc, onSnapshot, orderBy, query, Timestamp, } from 'firebase/firestore'
+import { addDoc, collection, doc, documentId, onSnapshot, orderBy, query, QuerySnapshot, Timestamp, where, } from 'firebase/firestore'
 import { auth, db } from "../firebase-config"
 import 'flowbite';
 
 
+
 const MainBody = () => {
    const [messages, setMessages] = useState([])
-
    const messagesRef = collection(db, "messages")
+   const roomRef = collection(db, "room")
 
-
-   // PULL MESSAGES //
    useEffect(() => {
-      const queryMessages = query(messagesRef, orderBy("createdAt"))
-      const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
+   const listener = async (event) => {
+      if(document.getElementById("Main-Header-Text").innerText !== "") {
+         const queryMessages = query(roomRef, orderBy("messageData")) 
+         const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
             let messages = [];
+            let sortedMsg = [];
          snapshot.forEach((doc) => {
-            messages.push({...doc.data(), id: doc.id});
-         });
-         setMessages(messages)
+            messages.push({...doc.data(), id: doc.id});                            
+         });     
+         messages.forEach((msg) => {
+            if(msg.room === document.getElementById("Main-Header-Text").innerText){
+               sortedMsg.push(msg)
+            }
+         })
+         console.log(sortedMsg[0].messageData)
+         setMessages(sortedMsg) 
       })
-
-      return () => unsuscribe()
+      return () => unsuscribe() 
+      }
+   }
+      document.addEventListener("click", listener);
+      return () => {
+      document.removeEventListener("click", listener);
+      }; 
    }, [])
+
+
+   // // PULL MESSAGES //
+   // useEffect(() => {
+   //    const queryMessages = query(messagesRef, where("room", "==", document.getElementById("Main-Header-Text").innerText )) 
+   //    const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
+   //          let messages = [];
+   //       snapshot.forEach((doc) => {
+   //          messages.push({...doc.data(), id: doc.id});
+   //       });
+   //       setMessages(messages) 
+   //    })
+      
+   //    return () => unsuscribe() 
+   // }, [])
 
    // SENDS MESSAGES TO DATABASE //
    useEffect(() => {
@@ -33,14 +61,18 @@ const MainBody = () => {
         if ((event.code === "Enter" || event.code === "NumpadEnter") && document.getElementById('text-box').innerText !== "") {
           event.preventDefault();
 
-          await addDoc(messagesRef, {
-            file: "",
-            text: String(document.getElementById('text-box').innerText),
-            createdAt: Timestamp.fromDate(new Date()),
-            user: auth.currentUser.displayName,
-            userIcon: auth.currentUser.photoURL,
-            room: "chat-room",
-          })
+         //  await addDoc(messagesRef, {
+         //    file: "",
+         //    text: String(document.getElementById('text-box').innerText),
+         //    createdAt: Timestamp.fromDate(new Date()),
+         //    user: auth.currentUser.displayName,
+         //    userIcon: auth.currentUser.photoURL,
+            
+         //  })
+         await addDoc(roomRef, {
+            room: document.getElementById("Main-Header-Text").innerText,
+            messageData: {text: String(document.getElementById('text-box').innerText), createdAt: Timestamp.fromDate(new Date()), user: auth.currentUser.displayName, userIcon: auth.currentUser.photoURL}
+         })
 
           //TEMPORARY FIX //
           document.getElementById("User-Icon").src = auth.currentUser.photoURL
@@ -55,7 +87,7 @@ const MainBody = () => {
       };
     }, []);
 
-    
+
    return(
       <div id="Main-Body" className=" flex flex-shrink w-9/12 bg-neutral-700 flex-col">
          
@@ -68,7 +100,7 @@ const MainBody = () => {
          
          
          <div id="Main-Chat" className="m-0 mr-0.5 flex flex-col-reverse flex-shrink grow bg-neutral-700 overflow-scroll overflow-x-hidden">
-            <div>{messages.map((message) => <Message userIcon={message.userIcon} userName={message.user} date={String(setDate(message.createdAt.seconds * 1000))} message={message.text} />)} </div>
+            <div>{messages.map((message) => <Message userIcon={message.messageData.userIcon} userName={message.messageData.user} date={String(setDate(message.messageData.createdAt * 1000))} message={message.messageData.text} />)} </div>
          </div>
 
 
@@ -77,7 +109,7 @@ const MainBody = () => {
          <div id="Main-Input" className=" bg-neutral-700 pt-3 pb-6 w-full pr-10 shrink-0">
             <div id="Input-Div" className="relative flex w-full h-full mx-5 text-neutral-300 items-start pt-0">
                
-                  <span id="text-box" typeof="submit" contentEditable="true" className="pt-1.5 inline-block h-full bg-neutral-600" />
+                  <span id="text-box" typeof="submit" contentEditable="true" className="pt-1.5 inline-block h-full bg-neutral-600"  />
                   
                   <div id="Add-Media-Input" className="px-4 absolute top-2 left-0 text-neutral-300 hover:text-hover" >
                   <BsFillPlusCircleFill size={22} data-tooltip-target="AddMedia" data-tooltip-trigger="click"/>

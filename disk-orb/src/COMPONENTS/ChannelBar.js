@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { BsMicFill, BsMicMuteFill, BsHeadphones, BsFillGearFill} from "react-icons/bs"
 import cyndaquil from '../IMAGES/Cyndaquil.jpg'
 import 'flowbite';
+import MainBody from "./MainBody";
 
 
 
@@ -147,6 +148,7 @@ export class ChannelGroupText extends React.Component {
       };
     }
 
+
     makeComponent() {
       console.log("clicked me")
       const newComponents = [...this.state.components, ChannelName]
@@ -185,7 +187,13 @@ export class ChannelGroupText extends React.Component {
              
             <div id="Channel-Group-Channels" style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1" >
                {components.length !== 0 && components.map((ChannelName, i) => <ChannelName key={i} icon={<BiHash size={18}/>} text={"Quotes"} room={"Quotes"}/>)}
-            </div>           
+            </div> 
+            <div id="Channel-Group-Channels" style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1" >
+               {components.length !== 0 && components.map((ChannelName, i) => <ChannelName key={i} icon={<BiHash size={18}/>} text={"Shitposts"} room={"Shitposts"}/>)}
+            </div>  
+            <div id="Channel-Group-Channels" style={{ display: (showing ? 'flex' : 'none') }} className="flex flex-col gap-1" >
+               {components.length !== 0 && components.map((ChannelName, i) => <ChannelName key={i} icon={<BiHash size={18}/>} text={"Tertiary"} room={"Tertiary"}/>)}
+            </div>        
          </div> 
        )
    }
