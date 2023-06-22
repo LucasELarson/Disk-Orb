@@ -100,7 +100,7 @@ const MainBody = () => {
          
          
          <div id="Main-Chat" className="m-0 mr-0.5 flex flex-col-reverse flex-shrink grow bg-neutral-700 overflow-scroll overflow-x-hidden">
-            <div>{messages.map((message) => <Message userIcon={message.messageData.userIcon} userName={message.messageData.user} date={String(setDate(message.messageData.createdAt * 1000))} message={message.messageData.text} />)} </div>
+            <div>{messages.map((message) => <Message userIcon={message.messageData.userIcon} userName={message.messageData.user} date={String(setDate(message.messageData.createdAt.seconds * 1000))} message={message.messageData.text} />)} </div>
          </div>
 
 
@@ -156,7 +156,7 @@ function setDate(day) {
    if(h>12){
       h =  h- 12
    }
-   if(String(m).length <1){
+   if(String(m).length <2){
       return(String(mo + 1) + "/" + String(d) + "/" + String(y) + " at " + String(h) + ":0" + String(m) + ampm)
    } else {
       return(String(mo + 1) + "/" + String(d) + "/" + String(y) + " at " + String(h) + ":" + String(m) + ampm)
