@@ -9,8 +9,8 @@ import 'flowbite';
 
 
 const MainBody = () => {
+   alert("this is an in development app, everything is built from scratch by me. In order to see and send messages click on the 'sign in' in the top left corner, then click the '+' next to the 'text channels' and type in 'General'. Some featured are not yet implemented or are partially implemented. For now the chat is this applications main functionality")
    const [messages, setMessages] = useState([])
-   const messagesRef = collection(db, "messages")
    const roomRef = collection(db, "room")
 
    useEffect(() => {
